@@ -27,12 +27,20 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { name, email, message } = formData;
-    const subject = encodeURIComponent(`Message from ${name}`);
+    const { name, message,subject } = formData;
+    var recipientEmail = "navteshmaurya@gmail.com";
+    const heading = encodeURIComponent(`${subject}`);
     const body = encodeURIComponent(message);
-    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${recipientEmail}?subject=${heading}&body=${body}`;
    
   };
+
+  // Recipient email (your email)
+    // Replace with your actual email
+
+  // Generate mailto link
+  // var mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage: " + message)}`;
+
 
   return (
     <>
@@ -49,12 +57,13 @@ function Contact() {
             required
           />
         </label>
+      
         <label>
-          Email:
+          Subject:
           <input
-            type="email"
-            name="email"
-            value={formData.email}
+            type="text"
+            name="subject"
+            value={formData.subject}
             onChange={handleChange}
             required
           />
