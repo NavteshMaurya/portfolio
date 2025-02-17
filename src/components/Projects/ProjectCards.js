@@ -12,7 +12,7 @@ function ProjectCards(props) {
   /* Allow long words to break and wrap */
   wordWrap : "break-word",
   overflowWrap :"break-word",
-  
+  textAlign: "start",
   /* Ensure text will wrap to the next line if needed */
   whiteSpace:"normal"
   }
