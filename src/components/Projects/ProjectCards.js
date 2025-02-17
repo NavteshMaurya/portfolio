@@ -6,12 +6,24 @@ import { BsGithub } from "react-icons/bs";
 
 function ProjectCards(props) {
 
+  const textStyle = {
+    // font-size: clamp(0.8rem, 2vw, 1.2rem);
+  
+  /* Allow long words to break and wrap */
+  wordWrap : "break-word",
+  overflowWrap :"break-word",
+  
+  /* Ensure text will wrap to the next line if needed */
+  whiteSpace:"normal"
+  }
+
+
   return (
     <Card className="project-card-view">
       <Card.Img variant="top" src={props.imgPath} alt="card-img" />
       <Card.Body style={{textAlign:"justify" }}>
         <Card.Title>{props.title}</Card.Title>
-        <Card.Text style={{ display:"inline-block", wordWrap: "break-word"}}>
+        <Card.Text className="text-project" style={textStyle}>
           {props.description}
         </Card.Text>
         <Button variant="primary" href={props.ghLink} target="_blank">
