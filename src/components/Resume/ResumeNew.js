@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Container, Row } from "react-bootstrap";
+import React, { useState, useRef, useEffect } from "react";
+import { Container, Row,Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Particle from "../Particle";
 import pdf from "../../Assets/../Assets/Navtesh_cv.pdf";
@@ -10,10 +10,32 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 function ResumeNew() {
   const [width, setWidth] = useState(1200);
+  const [containerWidth, setContainerWidth] = useState(0);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     setWidth(window.innerWidth);
   }, []);
+
+  const ResponsivePDF = ({ pdf }) => {
+   
+  
+    useEffect(() => {
+      const updateWidth = () => {
+        if (containerRef.current) {
+          setContainerWidth(containerRef.current.offsetWidth);
+        }
+      };
+  
+      updateWidth();
+      window.addEventListener('resize', updateWidth);
+      return () => window.removeEventListener('resize', updateWidth);
+    }, []);
+  
+
+  }
+
+
 
   return (
     <div>
@@ -30,15 +52,15 @@ function ResumeNew() {
             &nbsp;Download CV
           </Button>
         </Row>
-
-        <Row className="resume" style={{marginLeft: "100px"}}>
-          <Document file={pdf} className="d-flex-col justify-content-center align-item-center">
-            <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
-            <Page pageNumber={2} scale={width > 786 ? 1.7 : 0.6} />
-            <Page pageNumber={3} scale={width > 786 ? 1.7 : 0.6} />
+        <Row className="resume justify-content-center">
+        <Col xs={12} md={10} lg={8} className="px-3" ref={containerRef}>
+          <Document file={pdf} className="d-flex flex-column justify-content-center align-items-center">
+            <Page pageNumber={1} width={containerWidth} />
+            <Page pageNumber={2} width={containerWidth} />
+            <Page pageNumber={3} width={containerWidth} />
           </Document>
-        </Row>
-
+        </Col>
+      </Row>
         <Row style={{ justifyContent: "center", position: "relative" }}>
           <Button
             variant="primary"

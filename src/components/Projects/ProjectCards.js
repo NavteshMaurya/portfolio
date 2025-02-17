@@ -5,12 +5,13 @@ import { CgWebsite } from "react-icons/cg";
 import { BsGithub } from "react-icons/bs";
 
 function ProjectCards(props) {
+
   return (
     <Card className="project-card-view">
       <Card.Img variant="top" src={props.imgPath} alt="card-img" />
       <Card.Body style={{textAlign:"justify" }}>
         <Card.Title>{props.title}</Card.Title>
-        <Card.Text style={{ display:"inline-block" }}>
+        <Card.Text style={{ display:"inline-block", wordWrap: "break-word"}}>
           {props.description}
         </Card.Text>
         <Button variant="primary" href={props.ghLink} target="_blank">
