@@ -19,7 +19,7 @@ function ResumeNew() {
     const updateWidth = () => {
       if (containerRef.current) {
         const newWidth = containerRef.current.offsetWidth;
-        setContainerWidth(newWidth > 400 ? newWidth : 400); // Ensuring min width of 400px
+        setContainerWidth(newWidth > 400 ? newWidth : 300); // Ensuring min width of 400px
       }
     };
 
