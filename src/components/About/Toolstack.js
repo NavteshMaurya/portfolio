@@ -2,16 +2,13 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import {
   SiVisualstudiocode,
-  SiPostman,
-  SiSlack,
   SiVercel,
-  SiMacos,
 } from "react-icons/si";
 import { SiIntellijidea } from "react-icons/si";
 import { BiLogoVisualStudio } from "react-icons/bi";
 import { DiVisualstudio } from "react-icons/di";
 import { SiAndroidstudio } from "react-icons/si";
-
+import { FaGitAlt } from "react-icons/fa";
 
 function Toolstack() {
   return (
@@ -29,7 +26,11 @@ function Toolstack() {
         <Col xs={4} md={2} className="tech-icons">
             <SiIntellijidea />
             </Col>
-    
+         
+            <Col xs={4} md={2} className="tech-icons">
+            <FaGitAlt />
+
+            </Col>
       <Col xs={4} md={2} className="tech-icons">
         <SiVercel />
       </Col>
